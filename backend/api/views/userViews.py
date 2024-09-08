@@ -13,13 +13,14 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def create_user(request):
-    try:
+    try: 
         data = request.data
         username = data['username']
+        email = data['email']
         if User.objects.filter(username = username).exists():
             raise Exception("Username already exists, try a different username")
         
-        if User.objects.filter(email = data[email]).exists():
+        if User.objects.filter(email = email).exists():
             raise Exception("Cannot create multiple accounts of the same Email")
         
         serializer = UserRegistrationSerializer(data=data)
