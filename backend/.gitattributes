@@ -1,0 +1,8 @@
+# Set all text files to use LF
+* text=auto
+
+# Force specific file types to use LF
+*.js   text eol=lf
+*.css  text eol=lf
+*.html text eol=lf
+*.py   text eol=lf
