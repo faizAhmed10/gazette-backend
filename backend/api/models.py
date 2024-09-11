@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from mptt.models import MPTTModel, TreeForeignKey
+from cloudinary.models import CloudinaryField
 
 class AllowAuthor(models.Model):
     name = models.CharField(max_length=100) 
@@ -30,7 +31,7 @@ class Article(models.Model):
     author = models.ForeignKey(Authors, on_delete=models.CASCADE)
     title = models.CharField(max_length=200, null=False, blank=False)
     sub_title = models.CharField(max_length=250, null=False, blank=False)
-    image = models.ImageField(upload_to="article_img", null=True, blank=True)
+    image = CloudinaryField('image', null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = models.TextField()
     publish_date = models.DateTimeField(auto_now_add=True)
